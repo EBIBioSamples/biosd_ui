@@ -275,7 +275,7 @@
 					</xsl:if>
 					<xsl:if test="count(./attribute[@class='Unit'])>0">
 						<Unit>
-							<xsl:copy-of select="./attribute[@class='Unit']/simpleValue/Value"></xsl:copy-of>
+							<xsl:copy-of select="string(./attribute[@class='Unit']/simpleValue/value)"></xsl:copy-of>
 						</Unit>
 					</xsl:if>
 				</QualifiedValue>

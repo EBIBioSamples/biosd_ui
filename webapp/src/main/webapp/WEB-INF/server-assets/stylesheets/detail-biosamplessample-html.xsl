@@ -116,6 +116,31 @@
 			</h4>
 			<table id="bs_results_tablesamplegroupdetail">
 
+		<tr>
+				<td class="col_title">
+					<b>Submission Release Date:</b>
+				</td>
+				<td>
+					<xsl:call-template name="highlight">
+						<xsl:with-param name="pText"
+							select="substring(submission/attribute/simpleValue/value[../../@class='Submission Release Date'],0,11)" />
+						<xsl:with-param name="pFieldName" select="'releasedate'" />
+					</xsl:call-template>
+				</td>
+			</tr>
+			<tr>
+				<td class="col_title">
+					<b>Submission Update Date:</b>
+				</td>
+				<td>
+					<xsl:call-template name="highlight">
+						<xsl:with-param name="pText"
+							select="substring(submission/attribute/simpleValue/value[../../@class='Submission Update Date'],0,11)" />
+						<xsl:with-param name="pFieldName" select="'updatedate'" />
+					</xsl:call-template>
+				</td>
+			</tr>
+
 				<tr>
 					<td class="col_title">
 						<b>

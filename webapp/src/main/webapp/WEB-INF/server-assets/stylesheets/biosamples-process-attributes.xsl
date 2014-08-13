@@ -126,8 +126,31 @@
 					<!-- <xsl:value-of select="$pAttribute/simpleValue/value"></xsl:value-of> -->
 				</a>
 			</xsl:when>
-			<xsl:when
-				test="starts-with(.//attribute/simpleValue/value[../../@class='Term Source URI'],'http://www.ebi.ac.uk/efo/')">
+			
+				<xsl:when
+				test="starts-with(.//attribute/simpleValue/value[../../@class='Term Source ID'],'http:')">
+				<a
+					href="{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
+					target="ext">
+					<xsl:call-template name="highlight">
+						<xsl:with-param name="pText" select="value" />
+						<xsl:with-param name="pFieldName" select="$pField" />
+					</xsl:call-template>
+					<xsl:value-of select="$pAttribute/simpleValue/value"></xsl:value-of>
+				</a>
+			</xsl:when>
+			<xsl:otherwise>
+				<a
+					href="{.//attribute/simpleValue/value[../../@class='Term Source URI']}{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
+					target="ext">
+					<xsl:call-template name="highlight">
+						<xsl:with-param name="pText" select="value" />
+						<xsl:with-param name="pFieldName" select="$pField" />
+					</xsl:call-template>
+				</a>
+			</xsl:otherwise>
+		<!-- 	<xsl:when
+				test="starts-with(.//attribute/simpleValue/value[../../@class='Term Source URI'],'http://www.ebi.ac.uk/efo/EFO')">
 				<a
 					href="{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
 					target="ext">
@@ -146,9 +169,8 @@
 						<xsl:with-param name="pText" select="value" />
 						<xsl:with-param name="pFieldName" select="$pField" />
 					</xsl:call-template>
-					<!-- <xsl:value-of select="$pAttribute/simpleValue/value"></xsl:value-of> -->
 				</a>
-			</xsl:otherwise>
+			</xsl:otherwise> -->
 		</xsl:choose>
 
 		<!-- </xsl:for-each> -->

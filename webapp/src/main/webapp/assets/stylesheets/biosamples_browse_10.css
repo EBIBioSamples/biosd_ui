@@ -132,7 +132,7 @@ margin: 0 2px;
 color: #A67325;
 }
 
-#bs_browse .bs-pager, #table_samplegroups .bs-page-size {
+#bs_browse .bs-pager #table_samplegroups .bs-page-size {
 width: 33%;
 }
 #bs_browse .bs-pager {

@@ -322,6 +322,16 @@
 				<field name="accessionsort" type="integer"
 					path="translate(@id, translate(@id, '0123456789', ''), '') cast as xs:integer"
 					analyze="false" store="false" escape="false" autocompletion="false" />
+					
+					
+				<field name="releasedate" title="by Release Date" type="string"
+					path="replace(substring(submission/attribute/simpleValue/value[../../@class='Submission Release Date'],0,11),'-','-')"
+					analyze="true" store="true" escape="false" autocompletion="false"
+					sortfields="releasedate" />
+				<field name="updatedate" title="by Update Date" type="string"
+					path="replace(substring(submission/attribute/simpleValue/value[../../@class='Submission Update Date'],0,11),'-','-')"
+					analyze="true" store="true" escape="false" autocompletion="false"
+					sortfields="updatedate" />	
 
 				<!-- <field name="accessionsort" type="integer" path="if(starts-with(@id,'SAMN')) 
 					then substring-after(@id,'SAMN') cast as xs:integer else substring(@id,6) 
