@@ -88,8 +88,8 @@
 				<xsl:value-of select="$accession" />
 			</xsl:with-param>
 			<xsl:with-param name="pExtraJS">
-			<!-- <script src="{$context-path}/assets/scripts/jsdeferred.jquery-0.3.1.js"
-				type="text/javascript"></script> -->
+				<!-- <script src="{$context-path}/assets/scripts/jsdeferred.jquery-0.3.1.js" 
+					type="text/javascript"></script> -->
 				<script src="{$context-path}/assets/scripts/biosamples_detail_10.js"
 					type="text/javascript"></script>
 			</xsl:with-param>
@@ -472,23 +472,22 @@
 					<xsl:value-of select="$numberOfSamples"></xsl:value-of>
 				</td>
 			</tr>
-			
-			
-			<!--  references from my equivalents -->
-				<tr>
-					<td class="col_title">
-						<b>References:</b>
-					</td>
 
-					<td>
-						<!-- <div id="wrapper_top_scroll"> <div id="div_top_scroll"></div> 
-							</div> -->
-						<xsl:call-template name="process_references">
-							<xsl:with-param name="pReferences" select="References"></xsl:with-param>
-						</xsl:call-template>
-					</td>
-				</tr>
-			
+
+			<!-- references from my equivalents -->
+			<tr>
+				<td class="col_title">
+					<b>References:</b>
+				</td>
+
+				<td>
+					<!-- <div id="wrapper_top_scroll"> <div id="div_top_scroll"></div> </div> -->
+					<xsl:call-template name="process_references">
+						<xsl:with-param name="pReferences" select="References"></xsl:with-param>
+					</xsl:call-template>
+				</td>
+			</tr>
+
 			<!-- Other common attributes - sometimes they are used to have common 
 				information about all sample attributes - data protection -->
 			<!-- I will not show common attributes when I have only one sample -->
@@ -918,7 +917,9 @@
 	<xsl:template name="process_ftplocation">
 		<xsl:param name="pValue" />
 		<xsl:for-each select="$pValue/simpleValue">
-			<a href="{./value}" target="ext"><xsl:copy-of select="./value"></xsl:copy-of></a> &nbsp;
+			<a href="{./value}" target="ext">
+				<xsl:copy-of select="./value"></xsl:copy-of>
+			</a> &nbsp;
 		</xsl:for-each>
 	</xsl:template>
 

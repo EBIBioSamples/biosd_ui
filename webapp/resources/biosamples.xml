@@ -325,11 +325,11 @@
 					
 					
 				<field name="releasedate" title="by Release Date" type="string"
-					path="replace(substring(submission/attribute/simpleValue/value[../../@class='Submission Release Date'],0,11),'-','-')"
+					path="replace(substring(Submission/attribute/simpleValue/value[../../@class='Submission Release Date'],0,11),'-','-')"
 					analyze="true" store="true" escape="false" autocompletion="false"
 					sortfields="releasedate" />
 				<field name="updatedate" title="by Update Date" type="string"
-					path="replace(substring(submission/attribute/simpleValue/value[../../@class='Submission Update Date'],0,11),'-','-')"
+					path="replace(substring(Submission/attribute/simpleValue/value[../../@class='Submission Update Date'],0,11),'-','-')"
 					analyze="true" store="true" escape="false" autocompletion="false"
 					sortfields="updatedate" />	
 

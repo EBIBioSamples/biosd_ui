@@ -123,7 +123,7 @@
 				<td>
 					<xsl:call-template name="highlight">
 						<xsl:with-param name="pText"
-							select="substring(submission/attribute/simpleValue/value[../../@class='Submission Release Date'],0,11)" />
+							select="substring(Submission/attribute/simpleValue/value[../../@class='Submission Release Date'],0,11)" />
 						<xsl:with-param name="pFieldName" select="'releasedate'" />
 					</xsl:call-template>
 				</td>
@@ -135,7 +135,7 @@
 				<td>
 					<xsl:call-template name="highlight">
 						<xsl:with-param name="pText"
-							select="substring(submission/attribute/simpleValue/value[../../@class='Submission Update Date'],0,11)" />
+							select="substring(Submission/attribute/simpleValue/value[../../@class='Submission Update Date'],0,11)" />
 						<xsl:with-param name="pFieldName" select="'updatedate'" />
 					</xsl:call-template>
 				</td>
