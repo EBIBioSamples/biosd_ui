@@ -38,7 +38,6 @@
 		<!-- API VERSION -->
 		<interface.application.api.version>1.0</interface.application.api.version>
 		<!-- API VERSION -->
-
 		<interface.application.pref.reports.recipients>rpereira@ebi.ac.uk</interface.application.pref.reports.recipients>
 		<interface.application.pref.reports.hidden-recipients>rpereira@ebi.ac.uk</interface.application.pref.reports.hidden-recipients>
 		<interface.application.pref.feedback.recipients>rpereira@ebi.ac.uk</interface.application.pref.feedback.recipients>

@@ -28,7 +28,7 @@
 	<xsl:strip-space elements="*" />
 	<xsl:template match="//Sample">
 		<xsl:comment> BioSamples XML API - version 1.0</xsl:comment>	
-		<BioSample>
+		<BioSample submissionReleaseDate="{Submission/attribute/simpleValue/value[../../@class='Submission Release Date']}" submissionUpdateDate="{Submission/attribute/simpleValue/value[../../@class='Submission Update Date']}">
 		 <xsl:call-template name="process_schemaLocation">
 				<xsl:with-param name="pRootTag" select="."></xsl:with-param>
 				<xsl:with-param name="pSchemaLocation" select="$vSchemaLocation"></xsl:with-param>
