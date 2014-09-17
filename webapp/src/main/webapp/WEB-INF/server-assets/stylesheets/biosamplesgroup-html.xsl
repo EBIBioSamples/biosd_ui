@@ -875,7 +875,7 @@
 		<xsl:param name="pUrl" />
 		<xsl:param name="pId" />
 
-		<xsl:variable name="bdName" select="lower-case($pName)"></xsl:variable>
+		<xsl:variable name="bdName" select="lower-case(substring-before($pName,' '))"></xsl:variable>
 		<xsl:choose>
 			<xsl:when
 				test="$bdName=('arrayexpress','ena','ena sra','dgva','pride') and not($pUrl='')">
@@ -884,7 +884,7 @@
 					select="replace($pUrl,'http://www.ebi.ac.uk/pride/showExperiment.do\?experimentAccessionNumber','http://www.ebi.ac.uk/pride/archive/simpleSearch?q')"></xsl:variable>
 
 				<a href="{$pUrl}" target="ext">
-					<img src="{$basepath}/assets/images/{$bdName}_logo.gif" alt="{$pName} Link"
+					<img src="{$basepath}/assets/images/dblinkslogos/{$bdName}_logo.gif" alt="{$pName} Link"
 						border="0" title="{$pName}" />
 				</a>
 			</xsl:when>
