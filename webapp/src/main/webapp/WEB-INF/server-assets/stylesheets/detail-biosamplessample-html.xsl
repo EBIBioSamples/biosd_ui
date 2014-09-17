@@ -247,19 +247,20 @@
 			
 			
 				<!--  references from my equivalents -->
-				<tr>
+				<!-- <tr>
 					<td class="col_title">
 						<b>References:</b>
 					</td>
 
 					<td>
-						<!-- <div id="wrapper_top_scroll"> <div id="div_top_scroll"></div> 
-							</div> -->
+						<div id="wrapper_top_scroll"> <div id="div_top_scroll"></div> 
+							</div>
 						<xsl:call-template name="process_references">
 							<xsl:with-param name="pReferences" select="$vSample/References"></xsl:with-param>
 						</xsl:call-template>
 					</td>
-				</tr>
+				</tr> -->
+				<!--  references from my equivalents -->
 				
 				<tr>
 					<td class="col_title">
@@ -305,7 +306,7 @@
 		<xsl:param name="pUrl" />
 		<xsl:param name="pId" />
 
-		<xsl:variable name="bdName" select="lower-case($pName)"></xsl:variable>
+		<xsl:variable name="bdName" select="lower-case(substring-before($pName,' '))"></xsl:variable>
 		<!-- PRIDE changed the user interface: this is temporary -->
 		<xsl:variable name="pUrl"
 			select="replace($pUrl,'http://www.ebi.ac.uk/pride/showExperiment.do\?experimentAccessionNumber','http://www.ebi.ac.uk/pride/archive/simpleSearch?q')"></xsl:variable>
@@ -316,7 +317,7 @@
 				test="$bdName=('arrayexpress','ena','ena sra','dgva','pride') and not($pUrl='')">
 
 				<a href="{$pUrl}" target="ext">
-					<img src="{$basepath}/assets/images/{$bdName}_logo.gif" alt="{$pName} Link"
+					<img src="{$basepath}/assets/images/dblinkslogos/{$bdName}_logo.gif" alt="{$pName} Link"
 						border="0" title="{$pName}" />
 				</a>
 			</xsl:when>
