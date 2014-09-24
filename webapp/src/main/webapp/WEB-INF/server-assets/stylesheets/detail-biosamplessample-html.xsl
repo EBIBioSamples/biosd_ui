@@ -298,6 +298,7 @@
 				<xsl:with-param name="pId"
 					select=".//attribute[@class='Database ID']/simpleValue/value" />
 			</xsl:call-template>
+			<br/>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -328,7 +329,7 @@
 				</a>
 			</xsl:when>
 		</xsl:choose>
-		<a href="{$pUrl}" target="ext">
+		&nbsp;<a href="{$pUrl}" target="ext">
 			<xsl:copy-of select="$pId"></xsl:copy-of>
 		</a>
 	</xsl:template>

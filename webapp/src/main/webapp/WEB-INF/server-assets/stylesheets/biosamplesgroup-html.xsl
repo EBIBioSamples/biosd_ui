@@ -895,7 +895,7 @@
 				</a>
 			</xsl:when>
 		</xsl:choose>
-		<a href="{$pUrl}" target="ext">
+		&nbsp;<a href="{$pUrl}" target="ext">
 			<xsl:copy-of select="$pId"></xsl:copy-of>
 		</a>
 	</xsl:template>
