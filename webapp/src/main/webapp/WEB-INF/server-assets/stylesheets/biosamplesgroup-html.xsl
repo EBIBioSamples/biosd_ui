@@ -895,17 +895,9 @@
 				</a>
 			</xsl:when>
 		</xsl:choose>
-		<br />
-		URI:
 		<a href="{$pUrl}" target="ext">
-			<xsl:copy-of select="$pUrl"></xsl:copy-of>
+			<xsl:copy-of select="$pId"></xsl:copy-of>
 		</a>
-		;
-		<br />
-		ID:
-		<xsl:copy-of select="$pId"></xsl:copy-of>
-		;
-
 	</xsl:template>
 
 	<!-- <td vertical-align="middle">&nbsp;Name: <xsl:copy-of select=".//attribute/value[../@class='Database 
