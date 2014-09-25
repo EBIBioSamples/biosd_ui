@@ -300,7 +300,9 @@
 		<xsl:param name="pUrl" />
 		<xsl:param name="pId" />
 
-		<xsl:variable name="bdName" select="lower-case(substring-before($pName,' '))"></xsl:variable>
+		<!-- I will compare only with the first word - it works for the myequivalents service names -->
+		<!-- sometimes the dbname just have one string, so i need to add a space to assure that the substring-before works -->
+		<xsl:variable name="bdName" select="lower-case(substring-before(concat($pName,' '),' '))"></xsl:variable>
 		<xsl:choose>
 			<xsl:when
 				test="$bdName=('arrayexpress','ena','ena sra','dgva','pride') and not($pUrl='')">
@@ -308,13 +310,13 @@
 				<xsl:variable name="pUrl"
 					select="replace($pUrl,'http://www.ebi.ac.uk/pride/showExperiment.do\?experimentAccessionNumber','http://www.ebi.ac.uk/pride/archive/simpleSearch?q')"></xsl:variable>
 
-				<a href="{$pUrl}" target="ext">
+				<a href="{$pUrl}" target="ext" id="iconelink">
 					<img src="{$basepath}/assets/images/dblinkslogos/{$bdName}_logo.gif" alt="{$pName} Link"
 						border="0" title="{$pName}" />
 				</a>
 			</xsl:when>
 			<xsl:when test="not($pUrl='')">
-				<a href="{$pUrl}" target="ext" title="{$pName}">
+				<a href="{$pUrl}" target="ext" title="{$pName}" id="iconelink">
 					<font class="icon icon-generic" data-icon="L" title="{$pName}" />
 				</a>
 			</xsl:when>

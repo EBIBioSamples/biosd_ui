@@ -172,7 +172,7 @@
                     <li>YYYYY groups</li> -->
 				</ul>
 				
-				&nbsp;&nbsp;<a href="${interface.application.base.path}/group/SAMEG120702" sytle="text-decoration:none;border-bottom-width:0px"><img src="${interface.application.base.path}/assets/images/dblinkslogos/hipsci_small_logo.png" alt="Hipsci" border="0" title="Hipsci" /></a><br/>
+				&nbsp;&nbsp;<a href="${interface.application.base.path}/group/SAMEG120702" id="iconelink"><img src="${interface.application.base.path}/assets/images/dblinkslogos/hipsci_small_logo.png" alt="Hipsci" border="0" title="Hipsci" /></a><br/>
 				<span class="${interface.application.metadata.class}"><a
 					href="metadata?class=${interface.application.body.class}"
 					target="ext">Metadata</a></span>
