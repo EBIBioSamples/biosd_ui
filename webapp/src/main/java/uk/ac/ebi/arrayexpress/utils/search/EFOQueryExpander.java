@@ -105,10 +105,13 @@ public final class EFOQueryExpander implements IQueryExpander
                 boolQuery.add(query, BooleanClause.Occur.SHOULD);
 
                 for (String term : expansionTerms.synonyms) {
-                    Query synonymPart = newQueryFromString(term.trim(), field);
-                    if (!queryPartIsRedundant(query, synonymPart)) {
-                        boolQuery.add(synonymPart, BooleanClause.Occur.SHOULD);
-                        queryInfo.addToSynonymPartQuery(synonymPart);
+                    //only use synonyms of a useful length to prevent accidental collisions
+                    if (term.trim().length() >= 5) {
+                        Query synonymPart = newQueryFromString(term.trim(), field);
+                        if (!queryPartIsRedundant(query, synonymPart)) {
+                            boolQuery.add(synonymPart, BooleanClause.Occur.SHOULD);
+                            queryInfo.addToSynonymPartQuery(synonymPart);
+                        }
                     }
                 }
 
