@@ -26,7 +26,7 @@
 		<xsl:param name="pRootTag" />
 		<xsl:param name="pSchemaLocation" />
 		<xsl:for-each select="$pRootTag">
-			<xsl:attribute name="xsi:schemaLocation"><xsl:copy-of select="$pSchemaLocation"></xsl:copy-of></xsl:attribute>
+			<xsl:attribute name="xsi:schemaLocation"><xsl:copy-of select="concat('http://www.ebi.ac.uk/biosamples/SampleGroupExport/1.0 ',$pSchemaLocation)"></xsl:copy-of></xsl:attribute>
 		</xsl:for-each>
 	</xsl:template>
 
