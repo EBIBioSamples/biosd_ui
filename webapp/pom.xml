@@ -23,7 +23,7 @@
 		<interface.application.log.appender.ref>ROLLINGFILE</interface.application.log.appender.ref>
 		<interface.application.log.appender.jobs.ref>ROLLINGFILEJOBS</interface.application.log.appender.jobs.ref>
 		<interface.application.log.appender.performance.ref>ROLLINGFILEPERFORMANCE</interface.application.log.appender.performance.ref>
-		<interface.application.pref.reports.recipients>rpereira@ebi.ac.uk</interface.application.pref.reports.recipients>
+		<interface.application.pref.reports.recipients>biosamples-tech@ebi.ac.uk</interface.application.pref.reports.recipients>
 		<interface.application.base.path>/biosamples</interface.application.base.path>
 		<interface.application.base.service.name>BioSamples</interface.application.base.service.name>
 		<interface.application.base.service.logo>/biosamples/assets/images/BioSamples_logo.png</interface.application.base.service.logo>
@@ -38,10 +38,10 @@
 		<!-- API VERSION -->
 		<interface.application.api.version>1.0</interface.application.api.version>
 		<!-- API VERSION -->
-		<interface.application.pref.reports.recipients>rpereira@ebi.ac.uk</interface.application.pref.reports.recipients>
-		<interface.application.pref.reports.hidden-recipients>rpereira@ebi.ac.uk</interface.application.pref.reports.hidden-recipients>
-		<interface.application.pref.feedback.recipients>rpereira@ebi.ac.uk</interface.application.pref.feedback.recipients>
-		<interface.application.pref.remind.recipients>rpereira@ebi.ac.uk</interface.application.pref.remind.recipients>
+		<interface.application.pref.reports.recipients>biosamples-tech@ebi.ac.uk</interface.application.pref.reports.recipients>
+		<interface.application.pref.reports.hidden-recipients>biosamples-tech@ebi.ac.uk</interface.application.pref.reports.hidden-recipients>
+		<interface.application.pref.feedback.recipients>biosamples@ebi.ac.uk</interface.application.pref.feedback.recipients>
+		<interface.application.pref.remind.recipients>biosamples-tech@ebi.ac.uk</interface.application.pref.remind.recipients>
 
 		<interface.application.pref.files.prefix>bs</interface.application.pref.files.prefix>
 		<interface.application.index.directory>Setup</interface.application.index.directory>
