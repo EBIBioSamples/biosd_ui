@@ -370,7 +370,6 @@
 			</properties>
 		</profile>
 
-
 		<profile>
 			<id>curator</id>
 			<activation>
@@ -418,78 +417,6 @@
 					<interface.application.db.xml.update.timestamp>0</interface.application.db.xml.update.timestamp> 
 					<interface.application.pref.reload-all.update.schedule>0 0 0 * * ?</interface.application.pref.reload-all.update.schedule> 
 					<interface.application.pref.reload-all.update.interval /> <interface.application.pref.reload-all.update.atstart>false</interface.application.pref.reload-all.update.atstart> -->
-
-			</properties>
-		</profile>
-
-		<profile>
-			<id>curator_daily</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<interface.application.lucene.indexes.build>false</interface.application.lucene.indexes.build>
-				<interface.application.body.class>bs_curator_daily</interface.application.body.class>
-				<interface.application.metadata.class>metadata_show</interface.application.metadata.class>
-				<interface.application.base.path>/biosamples</interface.application.base.path>
-				<interface.application.link.www_domain>http://www.ebi.ac.uk</interface.application.link.www_domain>
-				<interface.application.link.www_domain.inc>${interface.application.base.path}/www-inc</interface.application.link.www_domain.inc>
-				<interface.application.log.default.priority>ALL</interface.application.log.default.priority>
-				<interface.application.db.xml.connection.dbname>biosamplesAEGroupDaily</interface.application.db.xml.connection.dbname>
-				<interface.application.db.xml.update.active>true</interface.application.db.xml.update.active>
-				<interface.application.db.xml.update.type>age</interface.application.db.xml.update.type>
-				<interface.application.db.xml.update.timestamp>1</interface.application.db.xml.update.timestamp>
-				<interface.application.pref.reload-all.update.schedule />
-				<interface.application.pref.reload-all.update.interval>15</interface.application.pref.reload-all.update.interval>
-				<interface.application.pref.reload-all.update.atstart>false</interface.application.pref.reload-all.update.atstart>
-
-			</properties>
-		</profile>
-
-		<profile>
-			<id>test.ae2_perftest</id>
-			<properties>
-			</properties>
-		</profile>
-		<profile>
-			<id>test.ae2_curator</id>
-			<properties>
-			</properties>
-		</profile>
-		<profile>
-			<id>preproduction</id>
-			<properties>
-
-			</properties>
-		</profile>
-		<profile>
-			<id>production_old</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<interface.application.google.analytics>
-                    <![CDATA[
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21742948-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-]]>
-				</interface.application.google.analytics>
-			</properties>
-		</profile>
-		<profile>
-			<id>london</id>
-			<properties>
 
 			</properties>
 		</profile>
