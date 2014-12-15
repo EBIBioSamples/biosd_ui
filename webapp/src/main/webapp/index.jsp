@@ -108,9 +108,12 @@
 					in one of the EBI&#39;s assay databases such as <a
 						href="//www.ebi.ac.uk/arrayexpress">ArrayExpress</a>, the <a
 						href="//www.ebi.ac.uk/ena">European Nucleotide Archive</a> or <a
-						href="//www.ebi.ac.uk/pride">PRoteomics Identificates DatabasE</a>.
+						href="//www.ebi.ac.uk/pride">PRIDE</a>.
 					It provides links to assays an specific samples, and accepts direct
 					submissions of sample information.
+				</p>
+				<p class="intro justify">
+				    Note. BioSamples is currently experiencing processing delays.
 				</p>
 			</section>
 		</div>
