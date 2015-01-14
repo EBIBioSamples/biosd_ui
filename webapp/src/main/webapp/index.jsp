@@ -112,9 +112,6 @@
 					It provides links to assays an specific samples, and accepts direct
 					submissions of sample information.
 				</p>
-				<p class="intro justify">
-				    Note. BioSamples is currently experiencing processing delays.
-				</p>
 			</section>
 		</div>
 
