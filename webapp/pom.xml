@@ -347,7 +347,7 @@
 				<interface.application.db.xml.update.active>true</interface.application.db.xml.update.active>
 				<interface.application.db.xml.update.type>file</interface.application.db.xml.update.type>
 				<interface.application.db.xml.update.url>/nfs/ma/home/BioSD/autoexportProd.xml</interface.application.db.xml.update.url>
-				<<!-- manually update from staging instance -->
+				<!-- manually update from staging instance -->
 				<interface.application.pref.reload-all.update.schedule />
 				<interface.application.pref.reload-all.update.interval />
 				<interface.application.pref.reload-all.update.atstart>false</interface.application.pref.reload-all.update.atstart>
