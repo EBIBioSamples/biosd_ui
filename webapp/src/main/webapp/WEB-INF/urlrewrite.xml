@@ -132,6 +132,14 @@
 		<to type="forward">/servlets/control/update-efo</to>
 	</rule>
 
+<!-- Jobs-rule -->
+	<rule>
+		<from>^/update-global-setup-disk</from>
+		<to type="forward">/servlets/control/update-global-setup-disk</to>
+	</rule>
+
+
+
 	<!-- Metadata Information-rule -->
 	<rule>
 		<from>^/metadata</from>
@@ -216,6 +224,18 @@
 		<from>index.html</from>
 		<to type="forward">index.jsp</to>
 	</rule>
+	
+	<rule>
+        <from>^/browse[.]html?$</from>
+        <to type="forward" last="true">/servlets/query/biosamplesgroup/browse-biosamplesgroup/html</to>
+    </rule>
+    
+    <rule>
+        <from>^/browse_samples[.]html?$</from>
+        <to type="forward" last="true">/servlets/query/biosamplessample/browse-biosamplessample/html</to>
+    </rule>
+	
+	<!-- 
 	<rule>
 		<from>browse.html</from>
 		<to type="forward">browse.jsp</to>
@@ -224,6 +244,7 @@
 		<from>browse_samples.html</from>
 		<to type="forward">browse_samples.jsp</to>
 	</rule>
+	-->
 	<!-- map browse.html + index.html to *page*.jsp - the main ideia is to allow 
 		me to include EBI header and footer -->
 

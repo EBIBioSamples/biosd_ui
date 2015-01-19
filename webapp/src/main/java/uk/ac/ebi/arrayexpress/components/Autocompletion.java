@@ -94,11 +94,15 @@ public class Autocompletion extends ApplicationComponent {
 				Set<EFONode> children = node.getChildren();
 				if (null != children) {
 					for (EFONode child : children) {
-						sb.append(child.getTerm()).append("|o|");
-						if (child.hasChildren()) {
-							sb.append(child.getId());
-						}
-						sb.append("\n");
+					    //only report children of enough length
+					    //this reduces noise in the expansion from collisions
+					    if (child.getTerm().length() >= 5) {
+    						sb.append(child.getTerm()).append("|o|");
+    						if (child.hasChildren()) {
+    							sb.append(child.getId());
+    						}
+    						sb.append("\n");
+					    }
 					}
 				}
 			}

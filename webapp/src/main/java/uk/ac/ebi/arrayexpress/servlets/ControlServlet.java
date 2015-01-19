@@ -65,6 +65,8 @@ public class ControlServlet extends ApplicationServlet
                     || "reload-efo".equals(command)
                     || "update-efo".equals(command)
                     || "reload-all".equals(command)
+                    || "reload-all-disk".equals(command)
+                    || "update-global-setup-disk".equals(command)
                     | "incremental-reload".equals(command)
             		) {
                 ((JobsController) getComponent("JobsController")).executeJob(command);

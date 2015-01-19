@@ -36,6 +36,25 @@
 		</layout>
 	</appender>
 
+
+
+   <appender name="ROLLINGFILEPERFORMANCE-LONDON" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="File"
+			value="${catalina.base}/logs/${tomcat.hostname}/${interface.application.pref.files.prefix}-peformance.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ROLLINGFILEJOBS-LONDON" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="File"
+			value="${catalina.base}/logs/${tomcat.hostname}/${interface.application.pref.files.prefix}-jobs.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
 	<appender name="ROLLINGFILE-LONDON" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<param name="File"
@@ -122,7 +141,6 @@
 	<logger name="uk.ac.ebi.arrayexpress.filters.PerformanceMonitorFilter"
 		additivity="false">
 		<level value="${interface.application.log.default.priority}" />
-		<appender-ref ref="${interface.application.log.appender.ref}" />
 		<appender-ref ref="${interface.application.log.appender.performance.ref}" />
 	</logger>
 

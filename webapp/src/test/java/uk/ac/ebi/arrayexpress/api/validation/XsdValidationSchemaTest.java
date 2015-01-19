@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.StringReader;
+import java.io.StringWriter;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +57,7 @@ public class XsdValidationSchemaTest {
 		}
 
 	}
+	
 
 	//@Test
 	public void validateGroupSearchSchema() throws Exception {
@@ -136,7 +138,7 @@ public class XsdValidationSchemaTest {
 
 	public void validateSampleSchema(String sample) throws Exception {
 		URL schemaFile = new URL(
-				"http://ruis-imac.windows.ebi.ac.uk:8080/biosamples/assets/xsd/BioSDSchema.xsd");
+				"http://ruis-imac.windows.ebi.ac.uk:8080/biosamples/assets/xsd/v1.0/BioSDSchema.xsd");
 		Source xmlFile = new StreamSource(
 				"http://ruis-imac.windows.ebi.ac.uk:8080/biosamples/xml/sample/"+sample);
 		SchemaFactory schemaFactory = SchemaFactory
@@ -144,6 +146,7 @@ public class XsdValidationSchemaTest {
 		Schema schema = schemaFactory.newSchema(schemaFile);
 		Validator validator = schema.newValidator();
 		try {
+			System.out.println(xmlFile.toString());
 			validator.validate(xmlFile);
 			System.out.println(xmlFile.getSystemId() + " is valid");
 			assertTrue(true);

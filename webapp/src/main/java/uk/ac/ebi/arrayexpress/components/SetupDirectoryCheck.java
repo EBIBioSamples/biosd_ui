@@ -43,6 +43,7 @@ public class SetupDirectoryCheck extends ApplicationComponent {
 
 	private String setupDirectory;
 	private String globalSetupDirectory;
+	private String globalSetupLuceneDirectory;
 	private String backupDirectory;
 
 	public void initialize() throws Exception {
@@ -54,24 +55,25 @@ public class SetupDirectoryCheck extends ApplicationComponent {
 		if (null != connsConf) {
 			setupDirectory = connsConf.getString("setupDirectory");
 			globalSetupDirectory = connsConf.getString("globalSetupDirectory");
+			globalSetupLuceneDirectory = connsConf.getString("globalSetupLuceneDirectory");
 			backupDirectory = connsConf.getString("backupDirectory");
 
 			logger.debug("setupDirectory->" + setupDirectory);
-			logger.debug("globalSetupDirectory->" + globalSetupDirectory);
+			logger.debug("globalSetupLuceneDirectory->" + globalSetupLuceneDirectory);
 			logger.debug("backupDirectory->" + backupDirectory);
 		} else {
 			logger.error("bs Configuration is missing!!");
 		}
 		try {
 			File fileSetup = new File(setupDirectory);
-			File fileGlobalSetup = new File(globalSetupDirectory);
+			File fileGlobalSetupLucene =new File(globalSetupDirectory + File.separator + globalSetupLuceneDirectory);
 			logger.debug("fileGlobalSetup->"
-					+ fileGlobalSetup.getAbsolutePath());
-			if (!fileGlobalSetup.exists()) {
+					+ fileGlobalSetupLucene.getAbsolutePath());
+			if (!fileGlobalSetupLucene.exists()) {
 				this.getApplication()
 						.sendEmail(null,null,
 								"BIOSAMPLES: ##### INITIALIZATION WARNING #######",
-								"The GlobalSetupDirectory doesnt exist and it can cause problems (temporary directories removed during the servers restart)");
+								"The globalSetupLuceneDirectory doesnt exist and it can cause problems (temporary directories removed during the servers restart)");
 			}
 
 			// Now I will try the backupdirectory
@@ -88,17 +90,17 @@ public class SetupDirectoryCheck extends ApplicationComponent {
 				// send an email warning and copy it from a globalSetupDirectory
 				emailError = "The Setup directory does not exist ("
 						+ setupDirectory + ")\n";
-				if (fileGlobalSetup.exists()) {
-					emailError += "The Setup directory is being populated with the data from globalSetupDirectory ("
-							+ globalSetupDirectory + ")\n";
+				if (fileGlobalSetupLucene.exists()) {
+					emailError += "The Setup directory is being populated with the data from globalSetupLuceneDirectory ("
+							+ globalSetupLuceneDirectory + ")\n";
 					// FileUtils.copyDirectoryToDirectory(fileGlobalSetup,
 					// fileSetupPreviousDirectory); (this also copies the own
 					// directores
-					FileUtilities.copyFolder(fileGlobalSetup, fileSetup);
+					FileUtilities.copyFolder(fileGlobalSetupLucene, fileSetup);
 
 				} else {
-					emailError += "The globalSetupDirectory ("
-							+ globalSetupDirectory
+					emailError += "The globalSetupLuceneDirectory ("
+							+ globalSetupLuceneDirectory
 							+ ") also doesnt exist!!!! ERROR\n";
 				}
 				this.getApplication().sendEmail(null,null,

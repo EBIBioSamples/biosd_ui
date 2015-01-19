@@ -9,13 +9,26 @@
 	the specific language governing permissions and * limitations under the License. 
 	* -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns="http://www.ebi.ac.uk/biosamples/SampleGroupExport" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.ebi.ac.uk/biosamples/SampleGroupExport/1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:ae="http://www.ebi.ac.uk/arrayexpress/XSLT/Extension"
 	xmlns:html="http://www.w3.org/1999/xhtml" extension-element-prefixes="html xs fn ae"
 	exclude-result-prefixes="html xs fn ae" version="2.0">
 
 
+	<!-- When I change the API version number, I need to change it here also. 
+		so for instance if I'm developing 1.1 api, I will copy all the xml API xsl 
+		and give them the 1.1 name, anda change this variable to 1.1 on the new file -->
+	<xsl:variable name="apiVersion" select="'1.0'"></xsl:variable>
 	<!-- <xsl:output omit-xml-declaration="yes" /> -->
+
+	<xsl:template name="process_schemaLocation">
+		<xsl:param name="pRootTag" />
+		<xsl:param name="pSchemaLocation" />
+		<xsl:for-each select="$pRootTag">
+			<xsl:attribute name="xsi:schemaLocation"><xsl:copy-of select="concat('http://www.ebi.ac.uk/biosamples/SampleGroupExport/1.0 ',$pSchemaLocation)"></xsl:copy-of></xsl:attribute>
+		</xsl:for-each>
+	</xsl:template>
 
 	<xsl:template name="process_organizations">
 		<xsl:param name="pAttribute" />
@@ -245,24 +258,26 @@
 			comment="{boolean($pAttribute/@comment)}" type="{$pAttribute/@dataType}">
 			<xsl:for-each select="$pAttribute/simpleValue">
 				<QualifiedValue>
-				<Value>
-					<xsl:apply-templates select="value"></xsl:apply-templates>
-				</Value>
-				<xsl:if test="count(./attribute[@class='Term Source REF'])>0">
-					<xsl:call-template name="process_term_source_ref">
-						<xsl:with-param name="pName"
-							select="string(.//attribute/simpleValue/value[../../@class='Term Source Name'])" />
-						<xsl:with-param name="pUrl"
-							select="string(.//attribute/simpleValue/value[../../@class='Term Source URI'])" />
-						<xsl:with-param name="pVersion"
-							select="string(.//attribute/simpleValue/value[../../@class='Term Source Version'])" />
-						<xsl:with-param name="pId"
-							select="string(.//attribute/simpleValue/value[../../@class='Term Source ID'])" />
-					</xsl:call-template>
-				</xsl:if>
-				<xsl:if test="count(./attribute[@class='Unit'])>0">
-					<Unit><xsl:copy-of select="./attribute[@class='Unit']/simpleValue/Value"></xsl:copy-of></Unit>
-				</xsl:if>
+					<Value>
+						<xsl:apply-templates select="value"></xsl:apply-templates>
+					</Value>
+					<xsl:if test="count(./attribute[@class='Term Source REF'])>0">
+						<xsl:call-template name="process_term_source_ref">
+							<xsl:with-param name="pName"
+								select="string(.//attribute/simpleValue/value[../../@class='Term Source Name'])" />
+							<xsl:with-param name="pUrl"
+								select="string(.//attribute/simpleValue/value[../../@class='Term Source URI'])" />
+							<xsl:with-param name="pVersion"
+								select="string(.//attribute/simpleValue/value[../../@class='Term Source Version'])" />
+							<xsl:with-param name="pId"
+								select="string(.//attribute/simpleValue/value[../../@class='Term Source ID'])" />
+						</xsl:call-template>
+					</xsl:if>
+					<xsl:if test="count(./attribute[@class='Unit'])>0">
+						<Unit>
+							<xsl:copy-of select="string(./attribute[@class='Unit']/simpleValue/value)"></xsl:copy-of>
+						</Unit>
+					</xsl:if>
 				</QualifiedValue>
 			</xsl:for-each>
 		</Property>
@@ -281,6 +296,6 @@
 			</derivedFrom>
 		</xsl:for-each>
 	</xsl:template>
-	
-	
+
+
 </xsl:stylesheet>

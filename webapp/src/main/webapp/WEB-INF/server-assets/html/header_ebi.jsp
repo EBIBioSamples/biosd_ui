@@ -70,7 +70,7 @@
 						String aboutActive = relativeReqURI.startsWith("/about.html") ? "active"
 								: "";
 						
-						String browserPage=(samplesActive.equalsIgnoreCase("active")?"browse_samples.html":"browse.html");
+						String browserPage=(groupsActive.equalsIgnoreCase("active")?"browse.html":"browse_samples.html");
 						
 					%>
 			<div class="grid_12 omega">

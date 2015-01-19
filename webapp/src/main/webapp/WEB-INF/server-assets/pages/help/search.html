@@ -38,11 +38,23 @@
                 <p>Queries containing star or question mark characters are treated separately. A star character will match any combination of zero or more characters e.g. <code>leuk*mia</code> will match to leukemia and leukaemia as well as leukqwertymia. A question mark character will match any single characters e.g. <code>m?n</code> will match both man and men.</p>
                 <p>Queries that include wildcards are not explanded, and wildcards cannot be at the beginning of terms e.g. <code>?ouse</code> is not possible. These are technical limitations that cannot be solved practically.</p>
                 
+<<<<<<< HEAD
 				<h4>Searching with Date</h4>
 				<p>It is possible to search for sample groups according to release date and update date. To search for release date, in the search box you need to enter the following query: <code>releasedate:2013-05-16</code>. Similarly you can query for an update date: <code>updatedate:2013-11-25</code>. </p>
 				<p>To query with a "date range" we use the <code>TO</code> keyword: <code>releasedate:[2013-05-16 TO 2013-06-16]</code>. Please note that the date syntax is yyyy-MM-dd, a double digit month is required to satisfy the query syntax.</p>
 				
 				
+=======
+                <h4>Range queries</h4>
+                <p>Certain attributes can be queried for ranges of matching values. For example for things that were last updated between the 1st and 4th of April 2014.</p>
+                <p>Attributes that can be searched using ranges are:
+	                <ul>
+	                	<li>Last update date e.g. <code>updatedate:[2014-04-01 TO 2014-04-04]</code></li>
+	                	<li>Release date e.g. <code>releasedate:[2014-04-01 TO 2014-04-04]</code></li>
+	                </ul>
+                </p>
+                
+>>>>>>> 7df9af38b77c0c3c02205fb4b42b8f376dc9e477
             </section>
             <aside class="grid_6 omega">
                 <h3>Help</h3>

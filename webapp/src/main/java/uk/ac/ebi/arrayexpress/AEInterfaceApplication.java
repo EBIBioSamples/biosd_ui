@@ -18,6 +18,7 @@ package uk.ac.ebi.arrayexpress;
  */
 
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import uk.ac.ebi.arrayexpress.app.Application;

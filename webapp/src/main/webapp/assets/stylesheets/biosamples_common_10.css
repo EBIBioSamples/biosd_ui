@@ -117,6 +117,9 @@ a:active {
 background-color: white;
 }
 
+#iconelink{
+border-bottom-style: none;
+}
 
 /* specific property setters */
 .bs_assign_font {

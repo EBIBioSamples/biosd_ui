@@ -414,8 +414,7 @@
 							<input class="submit" type="submit" value="Send" />
 						</form>
 					</section>
-	<!-- 			</div>
-				<div id="content" role="main" class="grid_24 clearfix"> -->
+					<!-- </div> <div id="content" role="main" class="grid_24 clearfix"> -->
 					<!-- If you require a breadcrumb trail, its root should be your service. 
 						You don't need a breadcrumb trail on the homepage of your service... -->
 					<xsl:if test="fn:boolean($pBreadcrumbTrail)">
@@ -506,19 +505,23 @@
 			</script>
 			<script src="{$context-path}/assets/scripts/jquery-1.8.2.min.js"
 				type="text/javascript"></script>
-			<script src="{$context-path}/assets/scripts/jsdeferred.jquery-0.3.1.js"
-				type="text/javascript"></script>
 			<script src="{$context-path}/assets/scripts/jquery.cookie-1.0.js"
 				type="text/javascript"></script>
 			<script src="{$context-path}/assets/scripts/jquery.query-2.1.7m-ebi.js"
 				type="text/javascript"></script>
+			<script src="{$context-path}/assets/scripts/jquery.caret-range-1.0.js" />
 			<script
 				src="{$context-path}/assets/scripts/jquery.autocomplete-1.1.0.130305.js"
 				type="text/javascript"></script>
-			<script src="{$context-path}/assets/scripts/jquery.caret-range-1.0.js" />
+			<!-- <script src="{$context-path}/assets/scripts/jsdeferred.jquery-0.3.1.js" 
+				type="text/javascript"></script> -->
 			<script src="{$context-path}/assets/scripts/biosamples_common_10.js"
 				type="text/javascript"></script>
+
 			<xsl:copy-of select="$pExtraCode" />
+
+
+
 			${interface.application.google.analytics}
 		</body>
 	</xsl:template>
@@ -545,6 +548,258 @@
 				</div>
 			</div>
 		</div>
+	</xsl:template>
+
+
+	<xsl:template name="add-table-sort">
+		<xsl:param name="pKind" />
+		<xsl:param name="pLinkText" />
+		<xsl:param name="pSortBy" />
+		<xsl:param name="pSortOrder" />
+		<!-- <xsl:if test="$pKind = $pSortBy"> -->
+		<xsl:choose>
+			<xsl:when test="fn:starts-with($pSortOrder, 'a')">
+				<a
+					href="{$context-path}{$relative-uri}?{ae:setQSParam(ae:setQSParam($query-string, 'sortby', $pKind), 'sortorder', fn:string('descending'))}">
+					<xsl:copy-of select="$pLinkText"></xsl:copy-of>
+				</a>
+				<xsl:if test="$pKind = $pSortBy">
+					<i class="aw-icon-angle-up" />
+				</xsl:if>
+			</xsl:when>
+			<xsl:otherwise>
+				<a
+					href="{$context-path}{$relative-uri}?{ae:setQSParam(ae:setQSParam($query-string, 'sortby', $pKind), 'sortorder', fn:string('ascending'))}">
+					<xsl:copy-of select="$pLinkText"></xsl:copy-of>
+				</a>
+				<xsl:if test="$pKind = $pSortBy">
+					<i class="aw-icon-angle-down" />
+				</xsl:if>
+
+			</xsl:otherwise>
+		</xsl:choose>
+		<!-- </xsl:if> -->
+	</xsl:template>
+
+	<xsl:function name="ae:setQSParam" as="xs:string">
+		<xsl:param name="pQueryString" as="xs:string" />
+		<xsl:param name="pParamName" as="xs:string" />
+		<xsl:param name="pParamValue" as="xs:string" />
+
+		<xsl:choose>
+			<xsl:when
+				test="fn:matches($pQueryString, fn:concat('(^|&amp;)', $pParamName, '='))">
+				<xsl:value-of
+					select="fn:replace($pQueryString, fn:concat('(^|&amp;)(', $pParamName, '=)([^&amp;]+)'), fn:concat('$1$2', $pParamValue))" />
+			</xsl:when>
+			<xsl:when test="fn:string-length($pQueryString) > 0">
+				<xsl:value-of
+					select="fn:concat($pQueryString, '&amp;', $pParamName,'=', $pParamValue)" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="fn:concat($pParamName, '=', $pParamValue)" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:function>
+
+	<xsl:template name="table-page-size">
+		<xsl:param name="pCurrentPageSize" as="xs:integer" />
+		<xsl:param name="pTotal" as="xs:integer" />
+		<xsl:param name="pPageParam" as="xs:string" />
+		<xsl:param name="pPageSizeParam" as="xs:string" />
+		<div class="bs-page-size">
+			<xsl:choose>
+				<xsl:when test="$pTotal > 25">
+					<xsl:variable name="vPageSizes" select="25, 50, 100, 250, 500" />
+					<xsl:text>Page size </xsl:text>
+					<xsl:for-each select="$vPageSizes">
+						<xsl:choose>
+							<xsl:when test="fn:current() = $pCurrentPageSize">
+								<span>
+									<xsl:value-of select="." />
+								</span>
+							</xsl:when>
+							<xsl:otherwise>
+								<a
+									href="{$context-path}{$relative-uri}?{ae:setQSParam(ae:setQSParam($query-string, $pPageParam, '1'), $pPageSizeParam, fn:string(fn:current()))}">
+									<xsl:value-of select="fn:current()" />
+								</a>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:for-each>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>&#160;</xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
+		</div>
+	</xsl:template>
+
+	<xsl:template name="table-pager-pages">
+		<xsl:param name="pTotal" as="xs:integer" />
+		<xsl:param name="pPage" as="xs:integer" />
+		<xsl:param name="pPageSize" as="xs:integer" />
+		<xsl:param name="pPageParam" as="xs:string" />
+		<xsl:param name="pPageSizeParam" as="xs:string" />
+
+		<div class="bs-pager">
+			<xsl:choose>
+				<xsl:when test="$pTotal > $pPageSize">
+					<xsl:variable name="vTotalPages"
+						select="(fn:floor( ( $pTotal - 1 ) div $pPageSize ) + 1) cast as xs:integer"
+						as="xs:integer" />
+
+					<xsl:text>Page </xsl:text>
+					<xsl:call-template name="table-pager-page">
+						<xsl:with-param name="pPage" select="1" />
+						<xsl:with-param name="pCurrentPage" select="$pPage" />
+						<xsl:with-param name="pPageSize" select="$pPageSize" />
+						<xsl:with-param name="pTotalPages" select="$vTotalPages" />
+						<xsl:with-param name="pPageParam" select="$pPageParam" />
+						<xsl:with-param name="pPageSizeParam" select="$pPageSizeParam" />
+					</xsl:call-template>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>&#160;</xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
+		</div>
+	</xsl:template>
+
+	<xsl:template name="table-pager-page">
+		<xsl:param name="pPage" as="xs:integer" />
+		<xsl:param name="pCurrentPage" as="xs:integer" />
+		<xsl:param name="pPageSize" as="xs:integer" />
+		<xsl:param name="pTotalPages" as="xs:integer" />
+		<xsl:param name="pPageParam" as="xs:string" />
+		<xsl:param name="pPageSizeParam" as="xs:string" />
+
+		<xsl:if test="$pPage &lt;= $pTotalPages">
+
+			<xsl:choose>
+				<xsl:when test="$pPage = $pCurrentPage">
+					<span>
+						<xsl:value-of select="$pPage" />
+					</span>
+				</xsl:when>
+				<xsl:when
+					test="($pPage = 2) and ($pCurrentPage > 4) and ($pTotalPages > 8)">
+					<xsl:text>..</xsl:text>
+				</xsl:when>
+				<xsl:when
+					test="($pPage = ($pTotalPages - 1)) and (($pTotalPages - $pCurrentPage) > 3) and ($pTotalPages > 8)">
+					<xsl:text>..</xsl:text>
+				</xsl:when>
+				<xsl:when
+					test="($pPage = 1) or (($pPage &lt; 7) and ($pCurrentPage &lt; 4)) or (fn:abs($pPage - $pCurrentPage) &lt; 3)">
+					<a
+						href="{$context-path}{$relative-uri}?{ae:setQSParam(ae:setQSParam($query-string, $pPageParam, fn:string($pPage)), $pPageSizeParam, fn:string($pPageSize))}">
+						<xsl:value-of select="$pPage" />
+					</a>
+				</xsl:when>
+				<xsl:when
+					test="((($pTotalPages - $pCurrentPage) &lt; 2) and ($pTotalPages - $pPage &lt; 6)) or ($pPage = $pTotalPages) or ($pTotalPages &lt;= 6)">
+					<a
+						href="{$context-path}{$relative-uri}?{ae:setQSParam(ae:setQSParam($query-string, $pPageParam, fn:string($pPage)), $pPageSizeParam, fn:string($pPageSize))}">
+						<xsl:value-of select="$pPage" />
+					</a>
+				</xsl:when>
+			</xsl:choose>
+
+			<xsl:if test="$pPage &lt; $pTotalPages">
+				<xsl:call-template name="table-pager-page">
+					<xsl:with-param name="pPage" select="$pPage + 1" />
+					<xsl:with-param name="pCurrentPage" select="$pCurrentPage" />
+					<xsl:with-param name="pPageSize" select="$pPageSize" />
+					<xsl:with-param name="pTotalPages" select="$pTotalPages" />
+					<xsl:with-param name="pPageParam" select="$pPageParam" />
+					<xsl:with-param name="pPageSizeParam" select="$pPageSizeParam" />
+				</xsl:call-template>
+			</xsl:if>
+		</xsl:if>
+
+	</xsl:template>
+
+	<xsl:template name="table-pager">
+		<xsl:param name="pColumnsToSpan" as="xs:integer" />
+		<xsl:param name="pName" as="xs:string" />
+		<xsl:param name="pParamPrefix" as="xs:string" select="''" />
+		<xsl:param name="pTotal" as="xs:integer" />
+		<xsl:param name="pPage" as="xs:integer" />
+		<xsl:param name="pPageSize" as="xs:integer" />
+
+		<xsl:variable name="vPageParam" select="fn:concat($pParamPrefix, 'page')" />
+		<xsl:variable name="vPageSizeParam" select="fn:concat($pParamPrefix, 'pagesize')" />
+
+		<xsl:variable name="vFrom" as="xs:integer">
+			<xsl:choose>
+				<xsl:when test="$pPage > 0">
+					<xsl:value-of select="1 + ( $pPage - 1 ) * $pPageSize" />
+				</xsl:when>
+				<xsl:when test="$pTotal = 0">
+					0
+				</xsl:when>
+				<xsl:otherwise>
+					1
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="vTo" as="xs:integer">
+			<xsl:choose>
+				<xsl:when test="( $vFrom + $pPageSize - 1 ) > $pTotal">
+					<xsl:value-of select="$pTotal" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$vFrom + $pPageSize - 1" />
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+
+		<tr>
+			<th colspan="{$pColumnsToSpan}" class="col_pager">
+				<xsl:call-template name="table-pager-pages">
+					<xsl:with-param name="pPage" select="$pPage" />
+					<xsl:with-param name="pPageSize" select="$pPageSize" />
+					<xsl:with-param name="pTotal" select="$pTotal" />
+					<xsl:with-param name="pPageParam" select="$vPageParam" />
+					<xsl:with-param name="pPageSizeParam" select="$vPageSizeParam" />
+				</xsl:call-template>
+				<xsl:call-template name="table-page-size">
+					<xsl:with-param name="pCurrentPageSize" select="$pPageSize" />
+					<xsl:with-param name="pTotal" select="$pTotal" />
+					<xsl:with-param name="pPageParam" select="$vPageParam" />
+					<xsl:with-param name="pPageSizeParam" select="$vPageSizeParam" />
+				</xsl:call-template>
+				<div class="bs-stats">
+					<xsl:choose>
+						<xsl:when test="$pTotal=0">
+							No
+							<xsl:copy-of select="concat($pName,'s')"></xsl:copy-of>
+							found.
+						</xsl:when>
+						<xsl:otherwise>
+
+							<xsl:if test="$pTotal > $pPageSize">
+								<xsl:text>Showing </xsl:text>
+								<span>
+									<xsl:value-of select="$vFrom" />
+									<xsl:text> - </xsl:text>
+									<xsl:value-of select="$vTo" />
+								</span>
+								<xsl:text> of </xsl:text>
+							</xsl:if>
+							<span>
+								<xsl:value-of select="$pTotal" />
+							</span>
+							<xsl:value-of select="fn:concat(' ', $pName)" />
+							<xsl:if test="$pTotal != 1">
+								<xsl:text>s</xsl:text>
+							</xsl:if>
+						</xsl:otherwise>
+					</xsl:choose>
+				</div>
+			</th>
+		</tr>
 	</xsl:template>
 
 </xsl:stylesheet>

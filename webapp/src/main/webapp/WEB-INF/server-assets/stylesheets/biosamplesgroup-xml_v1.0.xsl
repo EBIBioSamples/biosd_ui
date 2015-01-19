@@ -3,26 +3,40 @@
 
 <!DOCTYPE xsl:stylesheet [ <!ENTITY nbsp "&#160;"> ]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.ebi.ac.uk/biosamples/SampleGroupExport" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:aejava="java:uk.ac.ebi.arrayexpress.utils.saxon.ExtFunctions"
+	xmlns="http://www.ebi.ac.uk/biosamples/SampleGroupExport/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aejava="java:uk.ac.ebi.arrayexpress.utils.saxon.ExtFunctions"
 	xmlns:escape="org.apache.commons.lang.StringEscapeUtils" xmlns:html="http://www.w3.org/1999/xhtml"
 	extension-element-prefixes="xs aejava html escape"
 	exclude-result-prefixes="xs aejava html escape" version="2.0">
 
+	<xsl:include href="biosamples-xml-page_v1.0.xsl" />
+	<xsl:strip-space elements="*" />
 
 	<xsl:param name="id" />
 	<xsl:param name="sampleslist" />
 
+	<xsl:param name="host" />
+	<xsl:param name="context-path" />
 
-	<xsl:include href="biosamples-xml-page_v1.0.xsl" />
+
 
 	<xsl:variable name="vSamplesList"
 		select="if ($sampleslist and $sampleslist='true') then  1  else 0" />
 
+
+	<xsl:variable name="vSchemaLocation"
+		select="concat('http://',$host, $context-path, '/assets/xsd/v',$apiVersion, '/BioSDSchema.xsd')"></xsl:variable>
+
 	<xsl:strip-space elements="*" />
 	<xsl:template match="//SampleGroup">
-		<xsl:comment> BioSamples XML API - version 1.0</xsl:comment>
+		<xsl:comment>
+			BioSamples XML API - version 1.0
+		</xsl:comment>
 		<BioSampleGroup>
+			<xsl:call-template name="process_schemaLocation">
+				<xsl:with-param name="pRootTag" select="."></xsl:with-param>
+				<xsl:with-param name="pSchemaLocation" select="$vSchemaLocation"></xsl:with-param>
+			</xsl:call-template>
 			<!-- cannot copy all because I have there samplescount -->
 			<xsl:copy-of select="@id" />
 			<!-- <xsl:apply-templates select="*[not(self::SampleAttributes)]"></xsl:apply-templates> -->
@@ -30,13 +44,6 @@
 			<!-- <xsl:apply-templates select="attribute[simpleValue/value/text() and 
 				count(.//object)=0]"></xsl:apply-templates> -->
 
-			
-			<xsl:for-each select="./attribute[upper-case(@dataType)!='OBJECT']">
-				<xsl:call-template name="process_atomic_attribute">
-					<xsl:with-param name="pAttribute" select="." />
-				</xsl:call-template>
-			</xsl:for-each>
-			
 			<xsl:if
 				test="count(./attribute[@class='Term Sources'])>0 and count(.//object[@class='Term Source'])>0">
 				<xsl:call-template name="process_term_sources">
@@ -44,6 +51,14 @@
 						select="./attribute[@class='Term Sources']" />
 				</xsl:call-template>
 			</xsl:if>
+
+			<xsl:for-each select="./attribute[upper-case(@dataType)!='OBJECT']">
+				<xsl:call-template name="process_atomic_attribute">
+					<xsl:with-param name="pAttribute" select="." />
+				</xsl:call-template>
+			</xsl:for-each>
+
+
 
 			<xsl:if
 				test="count(./attribute[@class='Organizations'])>0 and count(.//object[@class='Organization'])>0">

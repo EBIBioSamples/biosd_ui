@@ -344,6 +344,14 @@
 
 	$(function() {
 		// alert("Assoc");
+		
+		//initializa local search-box
+		var keywords="";
+		keywords = $.query.get("keywords") || keywords;
+		//alert("key->" + keywords);
+		// initialize the keywords input with the search string from the homepage
+		$("#local-searchbox").val(keywords);
+		
 		initPersistentHeaders();
 		$("#ae-login").aeLoginForm({
 			open : "li.login a",
@@ -402,7 +410,7 @@ function aeClearField(sel) {
 $.ajaxSetup({
 	// crossDomain: true,
 	beforeSend : function(xhr, opts) {
-		// alert("url:"+opts.url);
+		//alert("url:"+opts.url);
 		if (opts.url.indexOf("/ebisearch/") == 0
 				&& !((opts.url.indexOf("www.ebi.ac.uk") == 0) || (opts.url
 						.indexOf("wwwdev.ebi.ac.uk") == 0))) {
@@ -410,11 +418,11 @@ $.ajaxSetup({
 			opts.crossDomain = true;
 		}
 
-		// alert(document.domain);
+		 //alert(document.domain);
 		// show progress spinner
 	},
 	complete : function() {
-		// hide progress spinner
+		// hide progress spinner	
 	}
 });
 

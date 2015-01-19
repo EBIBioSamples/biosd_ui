@@ -71,7 +71,6 @@ public class XmlDbConnectionPool extends ApplicationComponent
 			db = (Database) c.newInstance();
 			DatabaseManager.registerDatabase(db);
 			coll = DatabaseManager.getCollection(connectionString);
-			
 
 		} catch (XMLDBException e) {
 			// TODO Auto-generated catch block

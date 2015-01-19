@@ -36,14 +36,15 @@ public class DownloadBiosamplesXmlFileFromFile implements IDownloadBiosamplesXml
 
 
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 
 	public boolean downloadXml(String downloadDirectory) throws Exception {
 		
 		String url = Application.getInstance().getPreferences()
 				.getString("bs.xmlupdate.url");
-		
+		logger.info("Download file from ->"
+				+ url);
 		boolean ok = false;
 		try {
 			File sourceFile=new File(url);
@@ -51,7 +52,7 @@ public class DownloadBiosamplesXmlFileFromFile implements IDownloadBiosamplesXml
 			FileUtils.copyFileToDirectory(sourceFile, destinationDirectory);
 			ok = true;
 		} catch (Exception e) {
-			log.error("ERROR on copying file: " + e.getMessage());
+			logger.error("ERROR on copying file: " + e.getMessage());
 			e.printStackTrace();
 			throw new RuntimeException(e);
 			// return false;

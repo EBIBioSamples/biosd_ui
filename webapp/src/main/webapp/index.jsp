@@ -108,7 +108,7 @@
 					in one of the EBI&#39;s assay databases such as <a
 						href="//www.ebi.ac.uk/arrayexpress">ArrayExpress</a>, the <a
 						href="//www.ebi.ac.uk/ena">European Nucleotide Archive</a> or <a
-						href="//www.ebi.ac.uk/pride">PRoteomics Identificates DatabasE</a>.
+						href="//www.ebi.ac.uk/pride">PRIDE</a>.
 					It provides links to assays an specific samples, and accepts direct
 					submissions of sample information.
 				</p>
@@ -171,6 +171,8 @@
                     <li>XXXX Samples</li>
                     <li>YYYYY groups</li> -->
 				</ul>
+				
+				&nbsp;&nbsp;<a href="${interface.application.base.path}/group/SAMEG120702" id="iconelink"><img src="${interface.application.base.path}/assets/images/dblinkslogos/hipsci_small_logo.png" alt="Hipsci" border="0" title="Hipsci" /></a><br/>
 				<span class="${interface.application.metadata.class}"><a
 					href="metadata?class=${interface.application.body.class}"
 					target="ext">Metadata</a></span>
@@ -202,8 +204,8 @@
         type="text/javascript"></script>  -->
 	<script src="assets/scripts/jquery.cookie-1.0.js"
 		type="text/javascript"></script>
-	<!-- <script src="assets/scripts/jquery.query-2.1.7m-ebi.js"
-        type="text/javascript"></script> -->
+	 <script src="assets/scripts/jquery.query-2.1.7m-ebi.js"
+        type="text/javascript"></script>
 	<script src="assets/scripts/jquery.autocomplete-1.1.0.130305.js"
 		type="text/javascript"></script>
 	<script src="assets/scripts/jquery.caret-range-1.0.js"
