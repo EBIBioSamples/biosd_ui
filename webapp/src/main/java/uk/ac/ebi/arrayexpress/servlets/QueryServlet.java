@@ -235,7 +235,7 @@ public class QueryServlet extends AuthAwareApplicationServlet
                 }
             } catch (ParseException x) {
                 logger.error("Caught lucene parse exception:", x);
-                reportQueryError(out, "query-syntax-error.html", request.getParameter("keywords"));
+                reportQueryError(out, "query-syntax-error.txt", request.getParameter("keywords"));
             }
         } catch (Exception x) {
             throw new RuntimeException(x);
