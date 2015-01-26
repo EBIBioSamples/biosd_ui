@@ -103,43 +103,14 @@
 	<div id="content" role="main" class="grid_24 clearfix">
 
 		<nav id="breadcrumb">
-			<p>
-				<a href="${interface.application.base.path}">BioSamples</a> &gt; 
-				<%
-					if (request.getParameter("keywords") != null
-							&& !request.getParameter("keywords").equalsIgnoreCase("")) {
-				%>
-				<a href="${interface.application.base.path}/browse_samples.html">Samples</a> &gt; Search results for "<%=request.getParameter("keywords")%>"
-				<%
-					} else {
-				%>
-				Samples
-				<%
-					}
-				%>
-
-			</p>
+			<tr class="ae_results_tr_error">
+	<td colspan="9">
+	<div>There is a syntax problem with your query <b>${variable.query}</b>.</div>
+	<div>More information on query syntax available in <a href="${interface.application.link.query_help}">BioSamples Query Help</a>.</div>
+	</td>
+	</tr>
 		</nav>
 
-		<%
-			if (request.getParameter("keywords") != null
-					&& !request.getParameter("keywords").equalsIgnoreCase("")) {
-		%>
-		<section class="grid_18 alpha">
-			<h2>
-				BioSamples results for <span class="searchterm"><%=request.getParameter("keywords")%></span>
-			</h2>
-		</section>
-		<aside class="grid_6 omega shortcuts expander" id="search-extras">
-			<div id="ebi_search_results">
-				<h3 class="slideToggle icon icon-functional" data-icon="u">Show
-					more data from EMBL-EBI</h3>
-			</div>
-		</aside>
-		<%
-			}
-		%>
-		
 			
 		<section class="grid_24 alpha omega">
 			<div id="bs_browse">
