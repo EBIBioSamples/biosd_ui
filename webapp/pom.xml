@@ -197,7 +197,7 @@
 				<interface.application.db.xml.update.url>/nfs/ma/home/BioSD/autoexportDev.xml</interface.application.db.xml.update.url>
 				<interface.application.pref.reload-all.update.schedule>0 0 7 * * ?</interface.application.pref.reload-all.update.schedule>
 				<interface.application.pref.reload-all.update.interval />
-				<interface.application.pref.reload-all.update.atstart>false</interface.application.pref.reload-all.update.atstart>
+				<interface.application.pref.reload-all.update.atstart>true</interface.application.pref.reload-all.update.atstart>
 				<!-- <interface.application.db.xml.connection.dbname>biosamplesAEGroup_MikeListAtts_x16</interface.application.db.xml.connection.dbname> 
 					<interface.application.db.xml.connection.port>1984</interface.application.db.xml.connection.port> -->
 			</properties>
