@@ -84,7 +84,7 @@
 					test="count(.//attribute/simpleValue/value[../../@class='Term Source URI'])=0">
 					<!-- <xsl:copy-of select="$pAttribute/simpleValue/value"></xsl:copy-of> -->
 					<xsl:call-template name="highlight">
-						<xsl:with-param name="pText" select="./value" />.
+						<xsl:with-param name="pText" select="./value" />
 						<xsl:with-param name="pFieldName" select="$pField" />
 					</xsl:call-template>
 
@@ -154,7 +154,7 @@
 			
 			<xsl:otherwise>
 				<a
-					href="{.//attribute/simpleValue/value[../../@class='Term Source URI']}{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
+					href="{.//attribute/simpleValue/value[../../@class='Term Source URI']}/{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
 					target="ext">
 					<xsl:call-template name="highlight">
 						<xsl:with-param name="pText" select="value" />
