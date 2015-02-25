@@ -84,7 +84,7 @@
 					test="count(.//attribute/simpleValue/value[../../@class='Term Source URI'])=0">
 					<!-- <xsl:copy-of select="$pAttribute/simpleValue/value"></xsl:copy-of> -->
 					<xsl:call-template name="highlight">
-						<xsl:with-param name="pText" select="./value" />
+						<xsl:with-param name="pText" select="./value" />.
 						<xsl:with-param name="pFieldName" select="$pField" />
 					</xsl:call-template>
 
@@ -127,7 +127,7 @@
 				</a>
 			</xsl:when>
 			
-				<xsl:when
+			<xsl:when
 				test="starts-with(.//attribute/simpleValue/value[../../@class='Term Source ID'],'http:')">
 				<a
 					href="{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
@@ -139,6 +139,19 @@
 					<xsl:value-of select="$pAttribute/simpleValue/value"></xsl:value-of>
 				</a>
 			</xsl:when>
+			<!-- if joining URI and ID together, make sure they have a / between them -->
+			<xsl:when
+				test="ends-with(.//attribute/simpleValue/value[../../@class='Term Source URI'],'/')">
+				<a
+					href="{.//attribute/simpleValue/value[../../@class='Term Source URI']}/{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
+					target="ext">
+					<xsl:call-template name="highlight">
+						<xsl:with-param name="pText" select="value" />
+						<xsl:with-param name="pFieldName" select="$pField" />
+					</xsl:call-template>
+				</a>
+			</xsl:when>
+			
 			<xsl:otherwise>
 				<a
 					href="{.//attribute/simpleValue/value[../../@class='Term Source URI']}{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
