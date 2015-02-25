@@ -143,7 +143,7 @@
 			<xsl:when
 				test="ends-with(.//attribute/simpleValue/value[../../@class='Term Source URI'],'/')">
 				<a
-					href="{.//attribute/simpleValue/value[../../@class='Term Source URI']}/{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
+					href="{.//attribute/simpleValue/value[../../@class='Term Source URI']}{.//attribute/simpleValue/value[../../@class='Term Source ID']}"
 					target="ext">
 					<xsl:call-template name="highlight">
 						<xsl:with-param name="pText" select="value" />
