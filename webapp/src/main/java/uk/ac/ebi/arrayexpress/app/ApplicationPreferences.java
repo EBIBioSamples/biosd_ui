@@ -23,8 +23,10 @@ import org.apache.commons.configuration.XMLConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.NoSuchElementException;
 
 public class ApplicationPreferences
@@ -121,9 +123,19 @@ public class ApplicationPreferences
             XMLConfiguration.setDefaultListDelimiter('\uffff');
             XMLConfiguration xmlConfig = new XMLConfiguration();
 
-            prefsStream = Application.getInstance().getResource(
-                    "/WEB-INF/classes/" + prefsFileName + ".xml"
-            ).openStream();
+            URL prefsURL = Application.getInstance().getResource(
+                    "/WEB-INF/classes/" + prefsFileName + ".xml");
+            
+            if (prefsURL == null) {
+            	logger.info("Unable to find resource /WEB-INF/classes/" + prefsFileName + ".xml");
+            	//fallback to using a system property to locate the file
+            	String filename = System.getProperty("biosamples.preferences.file");
+            	logger.info("Got value of system property biosamples.preferences.file "+filename);
+            	File prefsFile = new File(filename);
+            	prefsURL = prefsFile.toURI().toURL();
+            }
+            
+            prefsStream = prefsURL.openStream();
             xmlConfig.load(prefsStream);
 
             prefs = xmlConfig;
