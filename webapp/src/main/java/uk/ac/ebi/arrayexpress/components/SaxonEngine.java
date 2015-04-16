@@ -375,6 +375,14 @@ public class SaxonEngine extends ApplicationComponent implements URIResolver, Er
                 logger.debug("Caching prepared stylesheet [{}]", stylesheet);
                 // Open the stylesheet
                 Source xslSource = resolve(stylesheet, null);
+                if (xslSource == null) {
+                	throw new RuntimeException("Unable to resolve stylesheet "+stylesheet);
+                }
+                
+                if (trFactory == null) {
+                	
+                	throw new RuntimeException("SaxonEngine not initialized?");
+                }
 
                 templates = trFactory.newTemplates(xslSource);
                 templatesCache.put(stylesheet, templates);
