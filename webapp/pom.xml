@@ -561,20 +561,25 @@
 					</webResources>
 				</configuration>
 			</plugin>
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>buildnumber-maven-plugin</artifactId> 
-				<version>1.0-beta-3</version> <executions> <execution> <phase>validate</phase> 
-				<goals> <goal>create</goal> </goals> </execution> </executions> <configuration> 
-				<doCheck>false</doCheck> <doUpdate>false</doUpdate> </configuration> </plugin> -->
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
-				<configuration>
-					<url>http://cocoa:8180/manager</url>
-					<server>cocoa_tomcat</server>
-					<path>/biosamples</path>
-				</configuration>
-			</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-enforcer-plugin</artifactId>
+			<version>1.4</version>
+			<executions>
+				<execution>
+					<id>enforce-versions</id>
+					<goals>
+						<goal>enforce</goal>
+					</goals>
+					<configuration>
+		              <rules>
+		              	<dependencyConvergence/>
+		              </rules>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
 
 		</plugins>
 	</build>
@@ -605,11 +610,6 @@
 			<version>1.4.3</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>jul-to-slf4j</artifactId> 
-			</dependency> <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-api</artifactId> 
-			</dependency> <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
-			<scope>runtime</scope> </dependency> -->
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
@@ -631,6 +631,12 @@
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
 			<version>2.1.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency> <!-- required by quartz 1.6.0 -->
 			<groupId>javax.transaction</groupId>
@@ -719,6 +725,12 @@
 			<groupId>com.jolbox</groupId>
 			<artifactId>bonecp</artifactId>
 			<version>0.6.7.2</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.opencsv</groupId>
@@ -762,6 +774,10 @@
 					<artifactId>commons-io</artifactId>
 					<groupId>commons-io</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
@@ -801,6 +817,12 @@
 			<groupId>net.sf.uadetector</groupId>
 			<artifactId>uadetector-resources</artifactId>
 			<version>2013.02</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -834,6 +856,16 @@
 				<groupId>xml-apis</groupId>
 				<artifactId>xml-apis</artifactId>
 				<version>1.3.03</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.1.1</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
