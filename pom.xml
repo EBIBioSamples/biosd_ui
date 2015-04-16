@@ -9,9 +9,8 @@
 	<url>http://www.ebi.ac.uk/biosamples</url>
 
 	<scm>
+		<!-- specify connection via https to get through firewall and proxy -->
 		<connection>scm:git:git@github.com:EBIBioSamples/biosd_ui.git</connection>
-		<!-- specify write connection via https to get through firewall and proxy -->
-		<developerConnection>scm:git:https://github.com/EBIBioSamples/biosd_ui.git</developerConnection>
 	</scm>
 
 	<!--<scm> <connection>scm:svn:svn://dukkha.ebi.ac.uk/trunk/BioSamples</connection> 
