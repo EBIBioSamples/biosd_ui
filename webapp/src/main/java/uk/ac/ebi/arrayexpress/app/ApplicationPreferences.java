@@ -123,16 +123,17 @@ public class ApplicationPreferences
             XMLConfiguration.setDefaultListDelimiter('\uffff');
             XMLConfiguration xmlConfig = new XMLConfiguration();
 
-            URL prefsURL = Application.getInstance().getResource(
-                    "/WEB-INF/classes/" + prefsFileName + ".xml");
-            
-            if (prefsURL == null) {
-            	logger.info("Unable to find resource /WEB-INF/classes/" + prefsFileName + ".xml");
-            	//fallback to using a system property to locate the file
-            	String filename = System.getProperty("biosamples.preferences.file");
+            //try to get system property file
+            String filename = System.getProperty("biosamples.preferences.file");
+            URL prefsURL;
+            if (filename != null) {
             	logger.info("Got value of system property biosamples.preferences.file "+filename);
             	File prefsFile = new File(filename);
             	prefsURL = prefsFile.toURI().toURL();
+            } else {
+            	logger.info("Falling back to /WEB-INF/classes/" + prefsFileName + ".xml");
+                prefsURL = Application.getInstance().getResource(
+                        "/WEB-INF/classes/" + prefsFileName + ".xml");
             }
             
             prefsStream = prefsURL.openStream();
