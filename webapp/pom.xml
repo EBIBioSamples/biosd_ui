@@ -20,9 +20,9 @@
 	<!-- default values for repository related properties -->
 	<properties>
 		<interface.application.log.default.priority>ALL</interface.application.log.default.priority>
-		<interface.application.log.appender.ref>ROLLINGFILE</interface.application.log.appender.ref>
-		<interface.application.log.appender.jobs.ref>ROLLINGFILEJOBS</interface.application.log.appender.jobs.ref>
-		<interface.application.log.appender.performance.ref>ROLLINGFILEPERFORMANCE</interface.application.log.appender.performance.ref>
+		<interface.application.log.appender.ref>ROLLINGFILE-LONDON</interface.application.log.appender.ref>
+		<interface.application.log.appender.jobs.ref>ROLLINGFILEJOBS-LONDON</interface.application.log.appender.jobs.ref>
+		<interface.application.log.appender.performance.ref>ROLLINGFILEPERFORMANCE-LONDON</interface.application.log.appender.performance.ref>
 		<interface.application.pref.reports.recipients>biosamples-tech@ebi.ac.uk</interface.application.pref.reports.recipients>
 		<interface.application.base.path>/biosamples</interface.application.base.path>
 		<interface.application.base.service.name>BioSamples</interface.application.base.service.name>
