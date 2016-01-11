@@ -20,7 +20,7 @@
                     <li>Filenames should end with .txt</li> 
                     <li>Cells are tab separated and only tab separated. Tabs should not be within cells, even if quoted or escaped.</li>
                     <li>If a data cell is empty and data for that tag is optional, then it is assumed that no data is provided for that cell for that tag. If data must be provided but is missing, the file is invalid.</li> 
-                    <li>Within a cell leading and trailing whitespace is stripped. Empty cells at the end of a line are also stripped. Line endings can be in any format (Windows, Linux, Mac) but Linux line endings (LF) are preferred.</li>
+                    <li>Within a cell leading and trailing whitespace is stripped. Empty cells at the end of a line are also stripped. Line endings can be in any format (Windows, Linux, Mac) but Linux line endings (LF) are preferred. New line characters must not be in any field, even if quoted/escaped. The presence of such character could prevent the submission of the SampleTab.</li>
                     <li>Empty lines are ignored, including lines composed only of whitespace (inc tabs)</li> 
                     <li>If a cell is started and terminated with double quotes, they may be stripped.</li>
                     <li>If the first character on a line is #, then that line is ignored. Use of # characters elsewhere is allowed, but discouraged. </li>
@@ -30,8 +30,7 @@
 
                 <h3>Example SampleTab files</h3>
 
-                <p>SampleTab files for all BioSamples are available from the <a href="//ftp.ebi.ac.uk/pub/databases/biosamples/">FTP site</a>, sorted by source. A specific example used in the screenshots in the following sections is <a href="//ftp.ebi.ac.uk/pub/databases/biosamples/coriell/GCR-niaid/sampletab.txt">this SampleTab file</a> .</p>
-                
+                <p>SampleTab files for all BioSamples are available from the <a href="//ftp.ebi.ac.uk/pub/databases/biosamples/">FTP site</a>, sorted by source. A specific example used in the screenshots in the following sections is <a href="//ftp.ebi.ac.uk/pub/databases/biosamples/coriell/GCR-niaid/sampletab.txt">this SampleTab file</a>.</p>
             </section>
             <aside class="grid_6 omega">
                 <h3>Help</h3>
@@ -39,7 +38,7 @@
                     <li><a href="index.html">Help home</a></li>
                     <li><a href="search.html">Searching</a></li>
                     <li class="active"><a href="submit.html">Submitting</a></li>
-                    <li><a href="api.html">Programatic interface</a></li>
+                    <li><a href="api.html">Programmatic interface</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact_us.html">Contact us</a></li>
