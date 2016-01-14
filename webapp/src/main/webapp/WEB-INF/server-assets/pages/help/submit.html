@@ -8,26 +8,27 @@
             <section id="bsd-help" class="grid_18 alpha">
                 
                 <h2>What should be submitted to BioSamples Database?</h2>
-                <p>BioSamples Database is a suitable repository for pre-registering multi-omic submissions (e.g. <a href="http://www.hipsci.org/">http://www.hipsci.org/</a>).</p>
-                <p>Samples that do not have associated data in other EBI databases may also be appropriate to submit to BioSamples Database.</p>
+                <p>The BioSamples Database is a suitable repository for pre-registering multi-omic submissions (e.g. <a href="http://www.hipsci.org/">http://www.hipsci.org/</a>).</p>
+                <p>Samples that do not have associated data in other EBI databases may also be suitable for submission.</p>
                 <p>When submitting to other EBI databases (e.g. <a href="//www.ebi.ac.uk/ena/">ENA</a> or <a href="//www.ebi.ac.uk/arrayexpress/">ArrayExpress</a>), please note that these share sample information with BioSamples Database. Therefore sample information from submitters may be present in BioSamples Database even if the information was not submitted directly to BioSamples Database.</p>
                 
                
                 <h2>How to submit BioSamples Database?</h2>
                 <p>Submissions to BioSamples Database should be in <a href="st.html">SampleTab file format</a>. This is a tab-separated spreadsheet-like text format compatible with popular office tools.</p>
-                <p>All of the existing samples in the BioSamples database is available in SampleTab format as examples at <a href="http://ftp.ebi.ac.uk/pub/databases/biosamples/">http://ftp.ebi.ac.uk/pub/databases/biosamples/</a></p>
+                <p>All of the existing samples in the BioSamples database are vailable in SampleTab format <a href="http://ftp.ebi.ac.uk/pub/databases/biosamples/">here</a></p>
                 <p>Once you have a SampleTab file, you can use the <a href="/biosamples/sampletab/validation.html">online validation service</a> to ensure it is correct. This will also apply common corrections and ontology mappings that are used to standardize the data.</p>
                 <p>You can send the validated and corrected SampleTab file by email to <a href="mailto:biosamples@ebi.ac.uk">biosamples@ebi.ac.uk</a>. We aim to respond to submissions within one working day.</p>
                 
                 <h3>Web Services</h3>
-                <p>There are several services provided for programatically sending sample information to the <a href="/biosamples">BioSamples Database</a>. These are:</p>
+                <p>There are several services provided for programatically sending sample information to the BioSamples Database. These are:</p>
         		<ul>
-         			<li><a href="/biosamples/sampletab/submission.html">Submission service</a> for submitting SampleTab files. Please note that they will not be immediately visible in the web interface, but will return the assigned accessions immediately.</li>
+         			<li><a href="/biosamples/sampletab/submission.html">Submission service</a> for submitting SampleTab files. Please note that they will not be immediately visible in the web interface, but the assigned accession will be returned immediately as a SampleTab file after the submission.</li>
           			<li><a href="/biosamples/sampletab/validation.html">Validation service</a> for validating SampleTab files without submitting them.</li>
           			<li><a href="/biosamples/sampletab/accession.html">Accessioning service</a> for assigning accessions to samples and groups. Please note that this does not submit any sample information to the database, but will return the assigned accessions immediately.</li>
         		</ul>
       			<p>If you have any questions about these services or would like more information, please contact us at <a href="mailto:biosamples@ebi.ac.uk?Subject=SampleTab+Web+Services">biosamples@ebi.ac.uk</a>.</p>
                 
+                <h2>More Informations</h2>
                 <h3>What is a BioSample?</h3>
                 <p>The definition of a BioSample is deliberately flexible in order to accommodate a wide range of uses. Typically each BioSample corresponds to a discrete physical object that is composed of live biological material.</p>
                 <p>In most cases BioSample entities are self-evident; such as a blood sample, cell culture or an individual organism. However, a BioSample can also be an environmental sample (e.g. for meta-genomic analysis), a hybrid between two species, parasite infected cell culture, etc.</p>
