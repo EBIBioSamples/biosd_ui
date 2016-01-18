@@ -7,6 +7,33 @@
         <div id="content" role="main" class="grid_24 clearfix">
             <section id="bsd-help" class="grid_18 alpha">
                 
+                <h2>What is a BioSample?</h2>
+                <p>The definition of a BioSample is deliberately flexible in order to accommodate a wide range of uses. Typically each BioSample corresponds to a discrete physical object that is composed of live biological material.</p>
+                <p>In most cases BioSample entities are self-evident; such as a blood sample, cell culture or an individual organism. However, a BioSample can also be an environmental sample (e.g. for meta-genomic analysis), a hybrid between two species, parasite infected cell culture, etc.</p>
+
+                <p>Some highly-curated and highly-referenced submissions may become part of the <em>reference layer</em>, for example <a href="http://www.genome.gov/10005107/">ENCODE</a> and <a href="http://www.1000genomes.org/">1000 Genomes Project</a>. These are BioSamples that are of significant interest and value.</p>
+
+                <h3>How are BioSamples described?</h3>
+
+                <p>The basic structure for describing BioSamples is an <em>attribute</em> which is composed of a <em>key</em> and a <em>value</em> (a key/value pair), as well as optional modifiers.</p>
+                <p>A BioSample is described by a set of attributes. BioSamples are collected together into one or more <em>Groups(s)</em>, which may also have attributes.</p>
+                <p>A SampleTab file contains one or more Groups, any BioSamples contained in those groups, and the attributes describing those BioSamples and Groups. A SampleTab file also contains general information, such as contact information and any publications related to the BioSamples.</p> 
+                <p><em>Some key/value pairs examples:</em></p>
+                <table cellspacing="0" cellpadding="0">
+                	<colgroup>
+                		<col><col>
+                	</colgroup>
+                	<thead>
+                		<tr> <th>Key</th><th>Value</th> </tr> 
+                	</thead>
+                	<tbody>
+                		<tr> <td>Organism</td><td>Homo sapiens</td> </tr>
+                		<tr> <td>Sex</td><td>Female</td> </tr>
+                		<tr> <td>Cell Type</td><td>Fibroblast</td> </tr>
+                		<tr> <td>Race</td><td>Caucasian</td> </tr>
+                	</tbody>
+                </table>
+
                 <h2>What should be submitted to BioSamples Database?</h2>
                 <p>The BioSamples Database is a suitable repository for pre-registering multi-omic submissions (e.g. <a href="http://www.hipsci.org/">http://www.hipsci.org/</a>).</p>
                 <p>Samples that do not have associated data in other EBI databases may also be suitable for submission.</p>
@@ -27,21 +54,7 @@
           			<li><a href="/biosamples/sampletab/accession.html">Accessioning service</a> for assigning accessions to samples and groups. Please note that this does not submit any sample information to the database, but will return the assigned accessions immediately.</li>
         		</ul>
       			<p>If you have any questions about these services or would like more information, please contact us at <a href="mailto:biosamples@ebi.ac.uk?Subject=SampleTab+Web+Services">biosamples@ebi.ac.uk</a>.</p>
-                
-                <h2>More Informations</h2>
-                <h3>What is a BioSample?</h3>
-                <p>The definition of a BioSample is deliberately flexible in order to accommodate a wide range of uses. Typically each BioSample corresponds to a discrete physical object that is composed of live biological material.</p>
-                <p>In most cases BioSample entities are self-evident; such as a blood sample, cell culture or an individual organism. However, a BioSample can also be an environmental sample (e.g. for meta-genomic analysis), a hybrid between two species, parasite infected cell culture, etc.</p>
 
-                <p>Some highly-curated and highly-referenced submissions may become part of the <em>reference layer</em>, for example <a href="http://www.genome.gov/10005107/">ENCODE</a> and <a href="http://www.1000genomes.org/">1000 Genomes Project</a>. These are BioSamples that are of significant interest and value.</p>
-                        
-
-                <h3>How are BioSamples described?</h3>
-
-                <p>The basic structure for describing BioSamples is an <em>attribute</em> which is composed of a <em>key</em> and a <em>value</em> (a key/value pair), as well as optional modifiers.</p>
-                <p>A BioSample is described by a set of attributes. BioSamples are collected together into one or more <em>Groups(s)</em>, which may also have attributes.</p>
-                <p>A SampleTab file contains one or more Groups, any BioSamples contained in those groups, and the attributes describing those BioSamples and Groups. A SampleTab file also contains general information, such as contact information and any publications related to the BioSamples.</p> 
-                
             </section>
             <aside class="grid_6 omega">
                 <h3>Help</h3>
