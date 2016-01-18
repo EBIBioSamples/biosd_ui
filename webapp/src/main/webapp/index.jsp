@@ -109,8 +109,7 @@
 						href="//www.ebi.ac.uk/arrayexpress">ArrayExpress</a>, the <a
 						href="//www.ebi.ac.uk/ena">European Nucleotide Archive</a> or <a
 						href="//www.ebi.ac.uk/pride">PRIDE</a>.
-					It provides links to assays an specific samples, and accepts direct
-					submissions of sample information.
+					It provides links to assays for specific samples, and accepts direct submissions of samples information.
 				</p>
 			</section>
 		</div>
