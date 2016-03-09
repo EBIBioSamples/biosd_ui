@@ -646,7 +646,7 @@
 		<dependency> <!-- required by quartz 1.6.0 -->
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
-			<version>3.2.1</version>
+			<version>3.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-httpclient</groupId>
